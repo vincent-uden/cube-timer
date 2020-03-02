@@ -92,6 +92,8 @@ def load_file(path):
         return []
     
     contents = contents[1:-1].split(", ")
+    if contents[0] == '':
+        contents.pop()
     output = list(map(int, contents))
 
     return output
