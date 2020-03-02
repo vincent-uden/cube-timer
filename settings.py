@@ -4,3 +4,4 @@ WHITE = (255, 255, 255)
 BG = (31, 31, 31)
 
 SAVE_FILE = "./times.txt"
+SCRAMBLE_LENGTH = 20

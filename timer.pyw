@@ -21,6 +21,7 @@ roboto_light_small = pg.font.Font("./Roboto/Roboto-Light.ttf", int(HEIGHT * 0.05
 
 timer_text = ""
 milli_seconds_passed = 0
+scramble = generate_scramble(SCRAMBLE_LENGTH)
 
 running = True
 timer_running = False
@@ -53,6 +54,7 @@ while running:
                     click_counter = 0
                     past_solves.append(milli_seconds_passed)
                     milli_seconds_passed = 0
+                    scramble = generate_scramble(SCRAMBLE_LENGTH)
 
     
     timer_text = timer_to_str(milli_seconds_passed)
@@ -63,7 +65,11 @@ while running:
     render_history(screen, past_solves, roboto_light)
     render_avgs(screen, past_solves, roboto_light_small, roboto_medium_small)
 
+    scramble_surf = roboto_medium_small.render(scramble, True, WHITE)
+    scramble_size = roboto_medium_small.size(scramble)
+
     screen.blit(timer_surf, ((WIDTH - timer_size[0]) / 2, 0))
+    screen.blit(scramble_surf, ((WIDTH - scramble_size[0]) / 2, HEIGHT * 0.25 + 5))
 
     pg.display.flip()
 

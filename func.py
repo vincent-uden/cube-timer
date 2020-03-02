@@ -1,4 +1,6 @@
 import pygame as pg
+import random
+import kociemba
 
 from settings import *
 
@@ -97,3 +99,33 @@ def load_file(path):
     output = list(map(int, contents))
 
     return output
+
+
+def generate_scramble(length=20):
+    moves = "LRDUFB"
+    dumb_scramble = []
+    for i in range(length * 6):
+        dumb_scramble.append(random.choice(moves))
+    dumb_scramble = "".join(dumb_scramble)
+
+    sequences = [[dumb_scramble[0], 1]]
+    for letter in dumb_scramble[1:]:
+        if sequences[-1][0] == letter:
+            sequences[-1][1] += 1
+        else:
+            sequences.append([letter, 1])
+    
+    output = ""
+    for pair in sequences:
+        pair[1] = pair[1] % 4
+        if pair[1] == 0:
+            continue
+        if pair[1] % 2 == 1:
+            if random.random() > 0.5:
+                output = output + pair[0] + " "
+            else:
+                output = output + pair[0] + "' "
+        if pair[1] == 2:
+            output = output + pair[0] + "2 "
+
+    return " ".join(output.split(" ")[:length])
