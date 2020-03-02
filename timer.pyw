@@ -5,9 +5,11 @@
 #  - Add colors to timer
 
 import pygame as pg
+import time
 
 from func import *
 from settings import *
+
 
 pg.init()
 pg.font.init()
