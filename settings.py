@@ -1,0 +1,6 @@
+WIDTH = 640
+HEIGHT = 480
+WHITE = (255, 255, 255)
+BG = (31, 31, 31)
+
+SAVE_FILE = "./times.txt"
